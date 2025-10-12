@@ -1,0 +1,12 @@
+/* src/index.css */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8fafc;
+  font-family: "Poppins", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
