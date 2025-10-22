@@ -54,15 +54,108 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* 🔹 NAVBAR GENERAL */
+.navbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 0.8rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 🔹 LOGO (Clickazo) — más personalidad visual */
+.navbar-brand strong {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: #0ea5e9 !important;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+/* Brillo sutil y animado al pasar */
+.navbar-brand strong::after {
+  content: "⚡";
+  color: #0369a1;
+  font-size: 1.4rem;
+  position: absolute;
+  right: -1.3rem;
+  top: 0.1rem;
+  animation: destello 2.5s infinite ease-in-out;
+}
+
+/* Efecto hover suave */
+.navbar-brand strong:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 8px rgba(14, 165, 233, 0.4);
+}
+
+/* 🔹 NAV LINKS */
+.navbar .nav-link {
+  color: #334155 !important;
+  font-weight: 500;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #0ea5e9 !important;
+  transform: scale(1.05);
+}
+
+/* 🔹 DROPDOWN */
+.dropdown-toggle.btn-info {
+  background-color: #0ea5e9 !important;
+  border: none;
+  border-radius: 12px;
+  padding: 6px 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.dropdown-toggle.btn-info:hover {
+  background-color: #0369a1 !important;
+}
+
+.dropdown-menu {
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔹 RESPONSIVIDAD */
+@media (max-width: 768px) {
+  .navbar {
+    text-align: center;
   }
-  a:hover {
-    color: #747bff;
+
+  .navbar-brand strong {
+    font-size: 1.6rem;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .nav-link {
+    margin: 8px 0;
+  }
+}
+
+/* ✨ ANIMACIÓN del logo */
+@keyframes destello {
+  0%, 100% {
+    opacity: 0.3;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(15deg) scale(1.2);
   }
 }

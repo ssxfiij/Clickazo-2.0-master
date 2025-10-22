@@ -5,7 +5,7 @@ function Hero({ busqueda, setBusqueda }) {
   return (
     <section className="hero py-5 text-center bg-light">
       <Container>
-        <h1>Bienvenido a Clickazo 🛍️</h1>
+        <h1>Bienvenido a Clickazo 🏷️</h1>
         <p>Encuentra las mejores ofertas en tus tiendas favoritas</p>
 
         <Form className="d-flex justify-content-center mt-4">
