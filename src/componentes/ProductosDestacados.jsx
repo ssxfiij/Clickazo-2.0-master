@@ -57,7 +57,7 @@ function ProductosDestacados({ productos = [], loading, error, titulo }) {
       )}
 
       {!loading && !error && mostrarProductos.length === 0 && (
-        <p className="text-center">Busca un producto para ver resultados.</p>
+        <p className="text-center">No hay productos para mostrar.</p>
       )}
 
       <div className="row">

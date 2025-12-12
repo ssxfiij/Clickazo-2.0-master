@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Hero from '../componentes/Hero';
 import ProductosDestacados from '../componentes/ProductosDestacados';
-import { searchProducts } from '../services/mercadoLibreApi';
+import { searchProducts, fetchHomeProducts } from '../services/fakeStoreApi';
 
 function Home() {
   // Handles search state, backend calls, and results for the homepage.
@@ -11,11 +11,25 @@ function Home() {
   const [error, setError] = useState('');
   const [ultimoTermino, setUltimoTermino] = useState('');
 
+  // Loads initial products for the home page using backend endpoint.
+  const cargarHome = async () => {
+    setLoading(true);
+    setError('');
+    try {
+      const data = await fetchHomeProducts();
+      setResultados(data);
+      setUltimoTermino('Ofertas destacadas');
+    } catch (err) {
+      setError('No se pudieron cargar productos iniciales. Intenta nuevamente.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Triggers backend search and updates results state.
   const buscarProductos = async () => {
     if (!busqueda.trim()) {
-      setResultados([]);
-      setUltimoTermino('');
+      setError('Ingresa un texto para buscar productos.');
       return;
     }
     setLoading(true);
@@ -30,6 +44,10 @@ function Home() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    cargarHome();
+  }, []);
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Card, Button, Row, Col, Alert, Spinner } from "react-bootstrap";
-import { fetchFavorites } from "../services/mercadoLibreApi";
+import { fetchFavorites } from "../services/fakeStoreApi";
 
 function Favoritos() {
   // Loads favorites from backend based on ids stored locally.
