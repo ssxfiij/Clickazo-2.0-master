@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Hero from '../componentes/Hero';
 import ProductosDestacados from '../componentes/ProductosDestacados';
 import { searchProducts, fetchHomeProducts } from '../services/fakeStoreApi';
@@ -10,6 +11,7 @@ function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [ultimoTermino, setUltimoTermino] = useState('');
+  const location = useLocation();
 
   // Loads initial products for the home page using backend endpoint.
   const cargarHome = async () => {
@@ -48,6 +50,14 @@ function Home() {
   useEffect(() => {
     cargarHome();
   }, []);
+
+  useEffect(() => {
+    if (location.state?.resetHome) {
+      setBusqueda('');
+      setError('');
+      cargarHome();
+    }
+  }, [location.state?.resetHome]);
 
   return (
     <>

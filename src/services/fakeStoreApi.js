@@ -1,7 +1,7 @@
+const apiBaseFromEnv =
+  import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL;
 const API_BASE =
-  import.meta.env.VITE_API_BASE_URL ||
-  import.meta.env.VITE_API_URL ||
-  'http://localhost:8080';
+  apiBaseFromEnv || (import.meta.env.DEV ? 'http://localhost:8080' : '');
 
 // Calls backend search endpoint to get FakeStore products.
 export async function searchProducts(query) {

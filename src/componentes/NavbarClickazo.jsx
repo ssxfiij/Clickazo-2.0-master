@@ -1,10 +1,11 @@
 // src/componentes/NavbarClickazo.js
 import React, { useState, useEffect } from "react";
 import { Navbar, Container, Nav, Dropdown, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function NavbarClickazo() {
   const [usuario, setUsuario] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
@@ -19,10 +20,18 @@ function NavbarClickazo() {
     window.location.href = "/login";
   };
 
+  const irInicio = () => {
+    navigate("/", { state: { resetHome: Date.now() } });
+  };
+
   return (
     <Navbar expand="lg" className="navbar" bg="light" variant="light">
       <Container>
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand
+          role="button"
+          onClick={irInicio}
+          style={{ cursor: "pointer" }}
+        >
           <strong style={{ color: "#0ea5e9" }}>CLICKAZO</strong>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -67,4 +76,3 @@ function NavbarClickazo() {
 }
 
 export default NavbarClickazo;
-
